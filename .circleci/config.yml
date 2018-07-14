@@ -6,6 +6,7 @@ jobs:
     steps:
       - checkout
       # - run: yarn install # インストール処理
+      - run: mkdir node_modules
       - persist_to_workspace:
           root: ~/project
           paths: # 保持したいパスを指定
