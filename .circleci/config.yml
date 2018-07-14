@@ -5,7 +5,7 @@ jobs:
       - image: circleci/node
     steps:
       - checkout
-      - run: yarn install # インストール処理
+      # - run: yarn install # インストール処理
       - persist_to_workspace:
           root: ~/project
           paths: # 保持したいパスを指定
