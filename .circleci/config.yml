@@ -3,22 +3,22 @@ jobs:
   prepare:
     docker:
       - image: circleci/node
-    working_directory: ~/project
+    working_directory: /tmp/project
     steps:
       - checkout
       - persist_to_workspace:
-          root: ~/project
+          root: /tmp/project
           paths:
             - ./node_modules
       - run: yarn install
   test:
     docker:
       - image: circleci/node
-    working_directory: ~/project
+    working_directory: /tmp/project
     steps:
       - checkout
       - attach_workspace:
-          at: ~/project
+          at: /tmp/project
       - run: yarn mocha
 workflows:
   version: 2
