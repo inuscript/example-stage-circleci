@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run: yarn install
       - persist_to_workspace:
-          root: ~/project
+          # root: ~/project
           paths:
             - ./node_modules
 
