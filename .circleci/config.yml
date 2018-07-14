@@ -6,11 +6,12 @@ jobs:
     working_directory: /tmp/project
     steps:
       - checkout
+      - run: yarn install
       - persist_to_workspace:
           root: /tmp/project
           paths:
             - ./node_modules
-      - run: yarn install
+
   test:
     docker:
       - image: circleci/node
