@@ -3,7 +3,6 @@ jobs:
   prepare:
     docker:
       - image: circleci/node
-    working_directory: /tmp/project
     steps:
       - checkout
       - run: yarn install
@@ -15,7 +14,6 @@ jobs:
   test:
     docker:
       - image: circleci/node
-    working_directory: /tmp/project
     steps:
       - checkout
       - attach_workspace:
