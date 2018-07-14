@@ -6,9 +6,9 @@ jobs:
     steps:
       - checkout
       - persist_to_workspace:
-        root: /tmp/workspace
-        paths:
-          - ./node_modules
+          root: /tmp/workspace
+          paths:
+            - ./node_modules
       - run: yarn install
   test:
     docker:
