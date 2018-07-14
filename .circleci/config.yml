@@ -1,16 +1,27 @@
 version: 2
 jobs:
-  prepare:
+  prepare1:
     docker:
       - image: circleci/node
-    working_directory: /tmp/prepare_workspace
     steps:
       - checkout
-      - run: yarn install # インストール処理
+      - run: mkdir prepare1 
+      - run: touch prepare1/prepare1.txt
       - persist_to_workspace:
-          root: /tmp/prepare_workspace
+          root: ~/project
           paths:
-            - ./node_modules
+            - ./prepare1
+  prepare2:
+    docker:
+      - image: circleci/node
+    steps:
+      - checkout
+      - run: mkdir prepare2
+      - run: touch prepare2/prepare2.txt
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - ./prepare2
   test:
     docker:
       - image: circleci/node
@@ -23,8 +34,10 @@ jobs:
 workflows:
   version: 2
   build:
-    jobs: # prepare -> testの順に行う
-      - prepare
+    jobs: # prepare1, prepare2 -> testの順に行う
+      - prepare1
+      - prepare2
       - test:
           requires:
-            - prepare
+            - prepare1
+            - prepare2
