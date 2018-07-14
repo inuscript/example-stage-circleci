@@ -1,8 +1,8 @@
-describe("SomeTest", function() {
-  it("test", function() {
+describe('SomeTest', function () {
+  it('test', function () {
     if (process.env.CI) {
-      this.skip();
+      this.skip()
     }
-    console.log("Some test");
-  });
-});
+    console.log('Some test')
+  })
+})

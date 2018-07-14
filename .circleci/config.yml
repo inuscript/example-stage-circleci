@@ -18,11 +18,22 @@ jobs:
       - attach_workspace:
           at: ~/project
       - run: yarn test # テストコマンド実行
+  lint:
+    docker:
+      - image: circleci/node
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/project
+      - run: yarn lint # テストコマンド実行
 workflows:
   version: 2
   build:
     jobs: # prepare -> testの順に行う
       - prepare
       - test:
+          requires:
+            - prepare
+      - lint:
           requires:
             - prepare
