@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run: yarn install
       - persist_to_workspace:
-          root: /tmp/project
+          root: ~/project
           paths:
             - ./node_modules
 
@@ -17,7 +17,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: /tmp/project
+          at: ~/project
       - run: yarn mocha
 workflows:
   version: 2
