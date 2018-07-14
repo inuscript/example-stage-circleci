@@ -17,11 +17,11 @@ jobs:
   test:
     docker:
       - image: circleci/node
-    working_directory: *prepare_workspace
+    # working_directory: *prepare_workspace
     steps:
       - checkout
       - attach_workspace:
-          at: *prepare_workspace
+          at: ~/project
       - run: yarn test # テストコマンド実行
 workflows:
   version: 2
