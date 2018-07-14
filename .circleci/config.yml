@@ -1,17 +1,14 @@
-aliasis:
-  - &prepare_workspace
-      /tmp/prepare
 version: 2
 jobs:
   prepare:
     docker:
       - image: circleci/node
-    working_directory: *prepare_workspace
+    working_directory: /tmp/prepare_workspace
     steps:
       - checkout
       - run: yarn install # インストール処理
       - persist_to_workspace:
-          root: *prepare_workspace
+          root: /tmp/prepare_workspace
           paths:
             - ./node_modules
   test:
