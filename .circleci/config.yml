@@ -12,7 +12,7 @@ jobs:
       - run: yarn install
   test:
     docker:
-      - image: circleci/<language>:<version TAG>
+      - image: circleci/node
     steps:
       - checkout
       - attach_workspace:
